@@ -14,6 +14,7 @@ db.once('open', function() {
 });
 
 const citySchema = mongoose.Schema({
+  id: Number,
   city_name_short: String,
   city_name_long: String,
   state: String,

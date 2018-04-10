@@ -11,7 +11,7 @@ app.use(express.static(path.join(__dirname, '/../client/dist')));
 app.use(bodyParser.json());
 
 app.get('/cities', (req, res) => {
-  
+
 });
 
 app.listen(process.env.PORT || 3000, () => {
