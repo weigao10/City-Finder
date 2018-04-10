@@ -21,8 +21,7 @@ class App extends React.Component {
   render () {
   	return (
       <div className="app">
-        <header className="navbar"><h1>City Finder</h1></header> 
-        
+        <header className="navbar"><h1>City Finder</h1></header>         
         <div className="main">
           <Search />
           <Results cities={this.state.cities}/>
