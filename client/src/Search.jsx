@@ -14,6 +14,7 @@ class Search extends React.Component{
       city_size: []
     }
     this.handleButtonClick = this.handleButtonClick.bind(this);
+    this.onToggle = this.onToggle.bind(this)
   }
 
   handleButtonClick(event) {    
@@ -27,15 +28,15 @@ class Search extends React.Component{
       <div>
         <div>
           Cost of Living:
-          <button name="rent" value="low" onClick={(event) => {this.handleButtonClick(event)}}>Low</button>    
-          <button name="rent" value="medium" onClick={(event) => {this.handleButtonClick(event)}}>Med</button>
-          <button name="rent" value="high" onClick={(event) => {this.handleButtonClick(event)}}>High</button>
+          <button name="rent" value="low" onClick={(event) => {this.onToggle(event)}}>Low</button>    
+          <button name="rent" value="medium" onClick={(event) => {this.onToggle(event)}}>Med</button>
+          <button name="rent" value="high" onClick={(event) => {this.onToggle(event)}}>High</button>
         </div>
         <div>
           Weather:
-          <button name="climate" value="cold" onClick={(event) => {this.handleButtonClick(event)}}>Low</button>    
-          <button name="climate" value="mild" onClick={(event) => {this.handleButtonClick(event)}}>Med</button>
-          <button name="climate" value="hot" onClick={(event) => {this.handleButtonClick(event)}}>High</button>
+          <button name="climate" value="cold" onClick={(event) => {this.onToggle(event)}}>Low</button>    
+          <button name="climate" value="mild" onClick={(event) => {this.onToggle(event)}}>Med</button>
+          <button name="climate" value="hot" onClick={(event) => {this.onToggle(event)}}>High</button>
         </div>
         <div>
           Region:
@@ -50,8 +51,29 @@ class Search extends React.Component{
     )
   }
 
-  onToggle(){
-
+  onToggle(event){
+    //check if state has value
+    if (this.state[event.target.name].includes(event.target.value)){
+      //this.setState
+      var newStateArr = this.state[event.target.name].slice()
+      newStateArr.splice(this.state[event.target.name].indexOf(event.target.value), 1)
+      this.setState({
+        [event.target.name]: newStateArr,
+      }, () => {
+        console.log('removed state item')
+        console.log(this.state)
+      })
+    } else {
+      var newStateArr = this.state[event.target.name].slice();
+      newStateArr.push(event.target.value);
+      this.setState({
+        [event.target.name]: newStateArr
+      }, () => {
+        console.log('added state item')
+        console.log(this.state)
+      })
+      
+    }
   }
 }
 
