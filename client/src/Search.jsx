@@ -1,4 +1,4 @@
-import react from 'react';
+import React from 'react';
 import axios from 'axios';
 
 class Search extends React.Component{
@@ -16,7 +16,9 @@ class Search extends React.Component{
   }
 
   render(){
-    
+    return (
+      <div></div>
+    )
   }
 
   onToggle(){

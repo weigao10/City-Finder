@@ -1,4 +1,4 @@
-import react from 'react';
+import React from 'react';
 import axios from 'axios';
 
 class Results extends React.Component{
@@ -6,7 +6,9 @@ class Results extends React.Component{
     super(props)
   }
   render(){
-
+    return (
+      <div></div>
+    )
   }
 }
 
