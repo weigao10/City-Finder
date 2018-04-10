@@ -10,7 +10,7 @@ var db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-  console.log('connected!!')
+  console.log('connected to database!!')
 });
 
 const citySchema = mongoose.Schema({
@@ -20,12 +20,15 @@ const citySchema = mongoose.Schema({
   state: String,
   region: String,
   avg_high_temp: Number,
-  avg_rent: Number, 
+  climate: String,
+  rent_cost: Number,
+  rent: String, 
   avg_rent_index: Number, 
-  by_ocean: Boolean,
-  by_mountains: Boolean,
-  by_lake: Boolean,
+  by_ocean: String,
+  by_mountains: String,
+  by_lake: String,
   population: Number,
+  city_size: String,
   zip_code: Number,
   image_url: String
 });
