@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 if (!process.env.MLAB_URL) {
-  const {MLAB_URL} = require('../config.js');
+  var {MLAB_URL} = require('../config.js');
 }
 
 mongoose.connect(process.env.MLAB_URL || MLAB_URL);
@@ -9,7 +9,6 @@ mongoose.connect(process.env.MLAB_URL || MLAB_URL);
 var db = mongoose.connection;
 
 const citySchema = mongoose.Schema({
-  id: ObjectId,
   city_name_short: String,
   city_name_long: String,
   state: String,
