@@ -38,7 +38,12 @@ const City = mongoose.model('City', citySchema);
 // remember to export functions made in this file
 
 let queryDB = (queryObj, callback) => {
-
+  console.log('queryObj is a: ', typeof queryObj);
+  console.log('Querying the database with queryObj: ', queryObj);
+  City.find(queryObj, (err, docs) => {
+    if (err) {console.log('Error in querying the database! Error is: ', err)};
+    callback(err, docs)
+  })
 }
 
 exports.queryDB = queryDB;
