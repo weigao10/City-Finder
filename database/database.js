@@ -8,7 +8,13 @@ mongoose.connect(process.env.MLAB_URL || MLAB_URL);
 
 var db = mongoose.connection;
 
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log('connected!!')
+});
+
 const citySchema = mongoose.Schema({
+  id: Number,
   city_name_short: String,
   city_name_long: String,
   state: String,
@@ -27,4 +33,10 @@ const citySchema = mongoose.Schema({
 const City = mongoose.model('City', citySchema);
 
 // remember to export functions made in this file
+
+let queryDB = (queryObj, callback) => {
+
+}
+
+exports.queryDB = queryDB;
 
