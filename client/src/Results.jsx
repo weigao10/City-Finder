@@ -6,21 +6,27 @@ class Results extends React.Component{
     super(props)
   }
   render(){
-    if (this.props.cities){
+    
+    if (this.props.cities.length > 0){
+      
       return (
-        <div className = 'cities' onClick = {this.props.showFaves ? this.delete : this.save}>
+        <div className='cities' onClick={this.props.showFaves ? this.delete : this.save}>
           {this.props.cities.map((city) => {
-            <div city={city} style={`background-image: url(`+city.image_url+`)`}>
-            <h3>{city.city_name}, {city.state}</h3>
-            <a>Pop: {city.population}</a>
-            <a>$/month: {city.avg_rent}</a>
+            let style = {
+              backgroundImage: 'url(' + city.image_url + ')'
+            }
+            return (<div value={city} style={style}>
+              <h3>{city.city_name_short}, {city.state}</h3>
+              <a>Pop: {city.population}</a>
+              <a>$/month: {city.rent}</a>
             </div>
+            )
           })}
         </div>
       )
     } else {
       return (
-        <div>nothing</div>
+        <div>No cities match your search. Please select fewer filters.</div>
       )
     }
   }
