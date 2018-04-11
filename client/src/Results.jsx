@@ -29,13 +29,12 @@ class Results extends React.Component{
             <div className="cityPanel" value={city} style={style}>
               <div className="container">
                 <div className="overlay">
-                  <span className="hoverText">Hello World</span>
+                  <div>Population: {city.population}</div>
+                  <div>rent/month: ${city.rent}</div>
                 </div> 
                 {/* <div className="info column is-one-third"> */}
                 <div className="info">
                   <h3>{city.city_name_short}, {city.state}</h3>
-                    <a>Pop: {city.population}</a>
-                    <a>$/month: {city.rent}</a>
                 </div>
               </div>
             </div>
