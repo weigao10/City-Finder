@@ -23,45 +23,52 @@ class Search extends React.Component{
     console.log('This button was clicked: ', buttonClickedName, buttonClickedValue);    
   }
 
+  triggerButton(id) {
+    let buttonId = document.getElementById(id);
+     buttonId.style.backgroundColor = (buttonId.style.backgroundColor === 'dodgerblue') ? 'Transparent' : 'dodgerblue'
+  }
+
   render(){
     return (
       <div>
         <div>
           <p className="button-title">Cost of Living:</p>
-          <button name="rent" value="low" onClick={(event) => {this.onToggle(event)}}>Low</button>    
-          <button name="rent" value="medium" onClick={(event) => {this.onToggle(event)}}>Med</button>
-          <button name="rent" value="high" onClick={(event) => {this.onToggle(event)}}>High</button>
+          <button id="1" name="rent" value="low" onClick={(event) => {this.onToggle(event)}}>Low</button>    
+          <button id="2" name="rent" value="medium" onClick={(event) => {this.onToggle(event)}}>Med</button>
+          <button id="3" name="rent" value="high" onClick={(event) => {this.onToggle(event)}}>High</button>
         </div>
         <div>
           <p className="button-title">Weather:</p>
-          <button name="climate" value="cold" onClick={(event) => {this.onToggle(event)}}>Low</button>    
-          <button name="climate" value="mild" onClick={(event) => {this.onToggle(event)}}>Med</button>
-          <button name="climate" value="hot" onClick={(event) => {this.onToggle(event)}}>High</button>
+          <button id="4" name="climate" value="cold" onClick={(event) => {this.onToggle(event)}}>Low</button>    
+          <button id="5" name="climate" value="mild" onClick={(event) => {this.onToggle(event)}}>Med</button>
+          <button id="6" name="climate" value="hot" onClick={(event) => {this.onToggle(event)}}>High</button>
         </div>
         <div>
           <p className="button-title">Region:</p>
-          <button name="region" value="Northeast" onClick={(event) => {this.onToggle(event)}}>Northeast</button>    
-          <button name="region" value="Southeast" onClick={(event) => {this.onToggle(event)}}>Southeast</button>
-          <button name="region" value="Midwest" onClick={(event) => {this.onToggle(event)}}>Midwest</button>
-          <button name="region" value="Southwest" onClick={(event) => {this.onToggle(event)}}>Southwest</button>
-          <button name="region" value="Pacific" onClick={(event) => {this.onToggle(event)}}>Pacific</button>
+          <button id="7" name="region" value="Northeast" onClick={(event) => {this.onToggle(event)}}>Northeast</button>    
+          <button id="8" name="region" value="Southeast" onClick={(event) => {this.onToggle(event)}}>Southeast</button>
+          <button id="9" name="region" value="Midwest" onClick={(event) => {this.onToggle(event)}}>Midwest</button>
+          <button id="10" name="region" value="Southwest" onClick={(event) => {this.onToggle(event)}}>Southwest</button>
+          <button id="11" name="region" value="Pacific" onClick={(event) => {this.onToggle(event)}}>Pacific</button>
         </div>
         <div>
           <p className="button-title">Environment:</p>
-          <button name="by_ocean" value="TRUE" onClick={(event) => {this.onToggle(event)}}>Near ocean</button>    
-          <button name="by_mountains" value="TRUE" onClick={(event) => {this.onToggle(event)}}>In the mountains</button>
-          <button name="by_lake" value="TRUE" onClick={(event) => {this.onToggle(event)}}>Near major lake</button>
+          <button id="12" name="by_ocean" value="TRUE" onClick={(event) => {this.onToggle(event)}}>Near ocean</button>    
+          <button id="13" name="by_mountains" value="TRUE" onClick={(event) => {this.onToggle(event)}}>In the mountains</button>
+          <button id="14" name="by_lake" value="TRUE" onClick={(event) => {this.onToggle(event)}}>Near major lake</button>
         </div>
         <div>
           <p className="button-title">Population:</p>
-          <button name="city_size" value="big" onClick={(event) => {this.onToggle(event)}}>Big city</button>
-          <button name="city_size" value="medium" onClick={(event) => {this.onToggle(event)}}>Mid-size city</button>
+          <button id="15" name="city_size" value="big" onClick={(event) => {this.onToggle(event)}}>Big city</button>
+          <button id="16" name="city_size" value="medium" onClick={(event) => {this.onToggle(event)}}>Mid-size city</button>
         </div>
       </div>
     )
   }
 
   onToggle(event){
+    //change the color of the button when clicked
+    this.triggerButton(event.target.id);
     //check if state has value
     if (this.state[event.target.name].includes(event.target.value)){
       var newStateArr = this.state[event.target.name].slice()
