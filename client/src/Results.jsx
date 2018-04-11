@@ -8,7 +8,6 @@ class Results extends React.Component{
   render(){
     
     if (this.props.cities.length > 0){
-      
       return (
         <div className='cities' onClick={this.props.showFaves ? this.delete : this.save}>
           {this.props.cities.map((city) => {
