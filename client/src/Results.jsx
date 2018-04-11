@@ -5,9 +5,16 @@ class Results extends React.Component{
   constructor(props){
     super(props)
   }
+
+
+
+  addHoverClass(e) {
+        
+  }
   render(){
     
     if (this.props.cities.length > 0){
+      
       return (
         <div className='cities' onClick={this.props.showFaves ? this.delete : this.save}>
           {this.props.cities.map((city) => {
@@ -16,13 +23,21 @@ class Results extends React.Component{
               width: "300px",
               height: "200px",
               backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
               backgroundSize: "cover"
             }
-            return (<div value={city} style={style}>
-              <h3>{city.city_name_short}, {city.state}</h3>
-              <a>Pop: {city.population}</a>
-              <a>$/month: {city.rent}</a>
+            return (
+            <div className="cityPanel" value={city} style={style}>
+              <div className="container">
+                <div className="overlay">
+                  <span className="hoverText">Hello World</span>
+                </div> 
+                {/* <div className="info column is-one-third"> */}
+                <div className="info">
+                  <h3>{city.city_name_short}, {city.state}</h3>
+                    <a>Pop: {city.population}</a>
+                    <a>$/month: {city.rent}</a>
+                </div>
+              </div>
             </div>
             )
           })}
@@ -37,4 +52,3 @@ class Results extends React.Component{
 }
 
 export default Results;
-

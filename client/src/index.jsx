@@ -41,7 +41,7 @@ class App extends React.Component {
   	return (
       <div className="app">
         <header className="navbar"><h1>City Finder</h1></header>         
-        <div className="main">
+        <div className="main columns">
           <div className="column is-one-quarter"><Search getCities={this.getCities}/></div>
           <div className="column is-three-quarters"><Results cities={this.state.cities}/></div>
         </div>
