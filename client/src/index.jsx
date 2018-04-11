@@ -16,35 +16,13 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    //test object 
-//     let test = {
-//     "$and": [
-//         {
-//             "$or": [
-//                 {
-//                     "id": 1
-//                 },
-//                 {
-//                     "id": 2
-//                 }
-//             ]
-//         },
-//         {
-//             "$or": [
-//                 {
-//                     "region": "Northeast"
-//                 }
-//             ]
-//         }
-//     ]
-// }
-    this.getCities(JSON.stringify(test));
+    this.getCities({});
   }
 
   
   // getCities will return the cities that match the query string
   getCities(query) {    
-    console.log('Sending GET request to /cities')
+    console.log('Sending GET request to /cities', query)
     axios.get('/cities', {
       params: query
     })
