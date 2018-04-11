@@ -28,7 +28,9 @@ class App extends React.Component {
     })
       .then( (results) => {
         console.log('Received results from GET/cities: ', results);
-        // set the cities that are returned to this.state.cities        
+        this.setState({
+          cities: results.data
+        })      
       }) 
       .catch( (error) => {
         console.log('Error in response to GET /cities: ', error);
