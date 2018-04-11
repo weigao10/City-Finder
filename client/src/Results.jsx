@@ -13,7 +13,12 @@ class Results extends React.Component{
         <div className='cities' onClick={this.props.showFaves ? this.delete : this.save}>
           {this.props.cities.map((city) => {
             let style = {
-              backgroundImage: 'url(' + city.image_url + ')'
+              backgroundImage: 'url(' + city.image_url + ')',
+              width: "300px",
+              height: "200px",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover"
             }
             return (<div value={city} style={style}>
               <h3>{city.city_name_short}, {city.state}</h3>
