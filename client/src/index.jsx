@@ -38,7 +38,7 @@ class App extends React.Component {
 //         }
 //     ]
 // }
-    this.getCities(JSON.stringify(test));
+    // this.getCities(JSON.stringify(test));
   }
 
   
