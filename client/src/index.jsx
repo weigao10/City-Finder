@@ -21,10 +21,10 @@ class App extends React.Component {
 
   
   // getCities will return the cities that match the query string
-  getCities(query) {    
-    console.log('Sending GET request to /cities', query)
+  getCities(state) {    
+    console.log('Sending GET request to /cities', state)
     axios.get('/cities', {
-      params: query
+      params: state
     })
       .then( (results) => {
         console.log('Received results from GET/cities: ', results);
@@ -41,9 +41,9 @@ class App extends React.Component {
   	return (
       <div className="app">
         <header className="navbar"><h1>City Finder</h1></header>         
-        <div className="main">
-          <Search getCities={this.getCities}/>
-          <Results cities={this.state.cities}/>
+        <div className="main" class="columns">
+          <div class="column is-one-third"><Search getCities={this.getCities}/></div>
+          <div class="column is-two-thirds"><Results cities={this.state.cities}/></div>
         </div>
       </div>
     )

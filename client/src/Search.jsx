@@ -15,7 +15,6 @@ class Search extends React.Component{
     }
     this.handleButtonClick = this.handleButtonClick.bind(this);
     this.onToggle = this.onToggle.bind(this)
-    this.makeQueryObj = this.makeQueryObj.bind(this)
   }
 
   handleButtonClick(event) {    
@@ -70,9 +69,7 @@ class Search extends React.Component{
       this.setState({
         [event.target.name]: newStateArr,
       }, () => {
-        let queryObj = this.makeQueryObj();
-        console.log('removed state item', queryObj)
-        this.props.getCities(queryObj)
+        this.props.getCities(JSON.stringify(this.state))
       })
     } else {
       var newStateArr = this.state[event.target.name].slice();
@@ -80,35 +77,9 @@ class Search extends React.Component{
       this.setState({
         [event.target.name]: newStateArr
       }, () => {
-        let queryObj = this.makeQueryObj();
-        console.log('added state item', queryObj)
-        this.props.getCities(queryObj)
+        this.props.getCities(JSON.stringify(this.state))
       })
-      
     }
-  }
-
-  makeQueryObj() {
-    let allQueries = []
-    for (let category in this.state) {
-
-      let oneQuery = [];
-      if (this.state[category].length > 0) {
-        this.state[category].forEach((selection) => {
-          let obj = {};
-          obj[category] = selection;
-          oneQuery.push(obj);
-        })
-        let obj = {}
-        obj["$or"] = oneQuery;
-        allQueries.push(obj)
-      }
-    }
-    let obj = {}
-    if(allQueries.length > 0){
-      obj["$and"] = allQueries;
-    } 
-    return JSON.stringify(obj)
   }
 }
 
