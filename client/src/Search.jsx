@@ -24,45 +24,6 @@ class Search extends React.Component{
     console.log('This button was clicked: ', buttonClickedName, buttonClickedValue);    
   }
 
-  render(){
-    return (
-      <div>
-        <div>
-          <p className="button-title">Cost of Living:</p>
-          <button name="rent" value="low" onClick={(event) => {this.onToggle(event)}}>Low</button>    
-          <button name="rent" value="medium" onClick={(event) => {this.onToggle(event)}}>Med</button>
-          <button name="rent" value="high" onClick={(event) => {this.onToggle(event)}}>High</button>
-        </div>
-        <div>
-          <p className="button-title">Weather:</p>
-          <button name="climate" value="cold" onClick={(event) => {this.onToggle(event)}}>Low</button>    
-          <button name="climate" value="mild" onClick={(event) => {this.onToggle(event)}}>Med</button>
-          <button name="climate" value="hot" onClick={(event) => {this.onToggle(event)}}>High</button>
-        </div>
-        <div>
-          <p className="button-title">Region:</p>
-          <button name="region" value="Northeast" onClick={(event) => {this.onToggle(event)}}>Northeast</button>    
-          <button name="region" value="Southeast" onClick={(event) => {this.onToggle(event)}}>Southeast</button>
-          <button name="region" value="Mid-Atlantic" onClick={(event) => {this.onToggle(event)}}>Mid-Atlantic</button>
-          <button name="region" value="Midwest" onClick={(event) => {this.onToggle(event)}}>Midwest</button>
-          <button name="region" value="Southwest" onClick={(event) => {this.onToggle(event)}}>Southwest</button>
-          <button name="region" value="Pacific" onClick={(event) => {this.onToggle(event)}}>Pacific</button>
-        </div>
-        <div>
-          <p className="button-title">Environment:</p>
-          <button name="by_ocean" value="TRUE" onClick={(event) => {this.onToggle(event)}}>Near ocean</button>    
-          <button name="by_mountains" value="TRUE" onClick={(event) => {this.onToggle(event)}}>In the mountains</button>
-          <button name="by_lake" value="TRUE" onClick={(event) => {this.onToggle(event)}}>Near major lake</button>
-        </div>
-        <div>
-          <p className="button-title">Population:</p>
-          <button name="city_size" value="big" onClick={(event) => {this.onToggle(event)}}>Big city</button>
-          <button name="city_size" value="medium" onClick={(event) => {this.onToggle(event)}}>Mid-size city</button>
-        </div>
-      </div>
-    )
-  }
-
   onToggle(event){
     //check if state has value
     if (this.state[event.target.name].includes(event.target.value)){
@@ -108,6 +69,45 @@ class Search extends React.Component{
     let obj = {}
     obj["$and"] = allQueries;
     return (obj);
+  }
+
+  render(){
+    return (
+      <div>
+        <div>
+          <p>Cost of Living:</p>          
+            <button name="rent" value="low" onClick={(event) => {this.onToggle(event)}}>Low</button>    
+            <button name="rent" value="medium" onClick={(event) => {this.onToggle(event)}}>Med</button>
+            <button name="rent" value="high" onClick={(event) => {this.onToggle(event)}}>High</button>          
+        </div>
+        <div>
+          <p className="button-title">Weather:</p>
+          <button name="climate" value="cold" onClick={(event) => {this.onToggle(event)}}>Low</button>    
+          <button name="climate" value="mild" onClick={(event) => {this.onToggle(event)}}>Med</button>
+          <button name="climate" value="hot" onClick={(event) => {this.onToggle(event)}}>High</button>
+        </div>
+        <div>
+          <p className="button-title">Region:</p>
+          <button name="region" value="Northeast" onClick={(event) => {this.onToggle(event)}}>Northeast</button>    
+          <button name="region" value="Southeast" onClick={(event) => {this.onToggle(event)}}>Southeast</button>
+          <button name="region" value="Mid-Atlantic" onClick={(event) => {this.onToggle(event)}}>Mid-Atlantic</button>
+          <button name="region" value="Midwest" onClick={(event) => {this.onToggle(event)}}>Midwest</button>
+          <button name="region" value="Southwest" onClick={(event) => {this.onToggle(event)}}>Southwest</button>
+          <button name="region" value="Pacific" onClick={(event) => {this.onToggle(event)}}>Pacific</button>
+        </div>
+        <div>
+          <p className="button-title">Environment:</p>
+          <button name="by_ocean" value="TRUE" onClick={(event) => {this.onToggle(event)}}>Near ocean</button>    
+          <button name="by_mountains" value="TRUE" onClick={(event) => {this.onToggle(event)}}>In the mountains</button>
+          <button name="by_lake" value="TRUE" onClick={(event) => {this.onToggle(event)}}>Near major lake</button>
+        </div>
+        <div>
+          <p className="button-title">Population:</p>
+          <button name="city_size" value="big" onClick={(event) => {this.onToggle(event)}}>Big city</button>
+          <button name="city_size" value="medium" onClick={(event) => {this.onToggle(event)}}>Mid-size city</button>
+        </div>
+      </div>
+    )
   }
 }
 

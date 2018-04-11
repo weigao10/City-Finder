@@ -16,29 +16,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    //test object 
-//     let test = {
-//     "$and": [
-//         {
-//             "$or": [
-//                 {
-//                     "id": 1
-//                 },
-//                 {
-//                     "id": 2
-//                 }
-//             ]
-//         },
-//         {
-//             "$or": [
-//                 {
-//                     "region": "Northeast"
-//                 }
-//             ]
-//         }
-//     ]
-// }
-    // this.getCities(JSON.stringify(test));
+    this.getCities({});
   }
 
   
