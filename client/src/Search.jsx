@@ -72,8 +72,8 @@ class Search extends React.Component{
         [event.target.name]: newStateArr,
       }, () => {
         let queryObj = this.makeQueryObj();
-        // this.props.getCities(queryObj)
         console.log('removed state item', queryObj)
+        this.props.getCities(queryObj)
       })
     } else {
       var newStateArr = this.state[event.target.name].slice();
@@ -82,8 +82,8 @@ class Search extends React.Component{
         [event.target.name]: newStateArr
       }, () => {
         let queryObj = this.makeQueryObj();
-        // this.props.getCities(queryObj)
         console.log('added state item', queryObj)
+        this.props.getCities(queryObj)
       })
       
     }
@@ -107,7 +107,7 @@ class Search extends React.Component{
     }
     let obj = {}
     obj["$and"] = allQueries;
-    return (obj);
+    return (JSON.stringify(obj));
   }
 }
 

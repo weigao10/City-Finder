@@ -16,22 +16,16 @@ app.get('/cities', (req, res) => {
   let queryObj = object that contains the queryString
   */
  console.log('req.query in server get/cities is: ', req.query);
- let queryObj = JSON.parse(req.query[0]);
-  DB.queryDB(queryObj, (err, docs) => {
+//  let queryObj = JSON.stringify(req.query);
+//  console.log('query obj in server get/cities is: ', queryObj);
+  DB.queryDB(req.query, (err, docs) => {
     if (err) {console.log('ERROR IN GETTING RESULTS FROM DB: ', err)}
     else {
-      console.log('calling queryDB in server')
       console.log('docs received from server are: ', docs)
       res.send(docs);
     }
   })    
 });
-
-// let test = {
-//   $or: [{id: 1}, {id: 2}]
-// }
-
-
 
 app.listen(process.env.PORT || 3000, () => {
   console.log('server listening on 3000!')
