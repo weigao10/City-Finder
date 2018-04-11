@@ -7,9 +7,18 @@ class Results extends React.Component{
   }
   render(){
     return (
-      <div></div>
+      <div className = 'cities' onClick = {this.props.showFaves ? this.delete : this.save}>
+        {this.props.results.forEach((city) => {
+          <div city={city} style={`background-image: url(`+city.image_url+`)`}>
+          <h3>{city.city_name}, {city.state}</h3>
+          <a>Pop: {city.population}</a>
+          <a>$/month: {city.avg_rent}</a>
+          </div>
+        })}
+      </div>
     )
   }
 }
 
 export default Results;
+
