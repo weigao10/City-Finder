@@ -45,7 +45,7 @@ let queryDB = (queryObj, callback) => {
   let temp = (queryObj !== '{}') ? JSON.parse(queryObj[0]) : {};
   City.find(temp, (err, docs) => {
     if (err) {console.log('Error in querying the database! Error is: ', err)};
-    callback(err, docs)
+    callback(err, docs);
   })
 }
 

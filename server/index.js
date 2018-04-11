@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const axios = require('axios');
-const helpers = require(path.join(__dirname + '/../database/helpers.js'));
+const {fetchWeather} = require(path.join(__dirname + '/../database/helpers.js'));
 const DB = require(path.join(__dirname + '/../database/database.js'));
 
 const app = express();
@@ -28,9 +28,26 @@ app.get('/cities', (req, res) => {
   })    
 });
 
+app.get('/weather', (req, res) => {
+  var dummyString = '2459115,2442047,2379574,2388929,2424766,2514815,2450022,2471217,2357024,2367105,2471390,2487956,2482250,2391585,2490383,2452078,2487889,2503863,2391279,2358820,2486982,2378426,2466256,2487796,2487796,2473224,2486340,2436704,2380358,2430683,2357536,2383660,2381475,2427032,2488042,2457170,2512636,2477058,2451822,2428344';
+
+  fetchWeather(dummyString, (err, data) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send('server error!')
+    } else {
+      res.status(200).send(data);
+    }
+  })
+});
+
 app.listen(process.env.PORT || 3000, () => {
   console.log('server listening on 3000!')
 })
+
+
+
+// HELPER FUNCTIONS:
 
 let makeQueryString = (queries) => {
   let allQueries = []
