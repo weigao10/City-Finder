@@ -28,25 +28,56 @@ class Search extends React.Component{
     return (
       <div>
         <div>
-          Cost of Living:
+<<<<<<< HEAD
+          <p class="button-title">Cost of Living:</p>
+=======
+          <p className="button-title">Cost of Living:</p>
+>>>>>>> fixBugInButtons
           <button name="rent" value="low" onClick={(event) => {this.onToggle(event)}}>Low</button>    
           <button name="rent" value="medium" onClick={(event) => {this.onToggle(event)}}>Med</button>
           <button name="rent" value="high" onClick={(event) => {this.onToggle(event)}}>High</button>
         </div>
         <div>
-          Weather:
+<<<<<<< HEAD
+          <p class="button-title">Weather:</p>
+=======
+          <p className="button-title">Weather:</p>
+>>>>>>> fixBugInButtons
           <button name="climate" value="cold" onClick={(event) => {this.onToggle(event)}}>Low</button>    
           <button name="climate" value="mild" onClick={(event) => {this.onToggle(event)}}>Med</button>
           <button name="climate" value="hot" onClick={(event) => {this.onToggle(event)}}>High</button>
         </div>
         <div>
-          Region:
+<<<<<<< HEAD
+          <p class="button-title">Region:</p>
+=======
+          <p className="button-title">Region:</p>
+>>>>>>> fixBugInButtons
+          <button name="region" value="Northeast" onClick={(event) => {this.onToggle(event)}}>Northeast</button>    
+          <button name="region" value="Southeast" onClick={(event) => {this.onToggle(event)}}>Southeast</button>
+          <button name="region" value="Mid-Atlantic" onClick={(event) => {this.onToggle(event)}}>Mid-Atlantic</button>
+          <button name="region" value="Midwest" onClick={(event) => {this.onToggle(event)}}>Midwest</button>
+          <button name="region" value="Southwest" onClick={(event) => {this.onToggle(event)}}>Southwest</button>
+          <button name="region" value="Pacific" onClick={(event) => {this.onToggle(event)}}>Pacific</button>
         </div>
         <div>
-          Environment:
+<<<<<<< HEAD
+          <p class="button-title">Environment:</p>
+=======
+          <p className="button-title">Environment:</p>
+>>>>>>> fixBugInButtons
+          <button name="by_ocean" value="TRUE" onClick={(event) => {this.onToggle(event)}}>Near ocean</button>    
+          <button name="by_mountains" value="TRUE" onClick={(event) => {this.onToggle(event)}}>In the mountains</button>
+          <button name="by_lake" value="TRUE" onClick={(event) => {this.onToggle(event)}}>Near major lake</button>
         </div>
         <div>
-          Population:
+<<<<<<< HEAD
+          <p class="button-title">Population:</p>
+=======
+          <p className="button-title">Population:</p>
+>>>>>>> fixBugInButtons
+          <button name="city_size" value="big" onClick={(event) => {this.onToggle(event)}}>Big city</button>
+          <button name="city_size" value="medium" onClick={(event) => {this.onToggle(event)}}>Mid-size city</button>
         </div>
       </div>
     )
