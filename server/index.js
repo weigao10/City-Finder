@@ -12,17 +12,12 @@ app.use(bodyParser.json());
 
 app.get('/cities', (req, res) => {
   // call DB.queryDB here to make a query to the database for the cities that match the queryString from the front end
-  /*
-  let queryObj = object that contains the queryString
-  */
- console.log('req.query in server get/cities is: ', req.state);
-//  let queryObj = JSON.stringify(req.query);
-//  console.log('query obj in server get/cities is: ', queryObj);
-  let queryString = makeQueryString(req.state)
+
+  let temp = (req.query !== '{}') ? req.query[0] : {};
+  let queryString = makeQueryString(temp)
   DB.queryDB(queryString, (err, docs) => {
     if (err) {console.log('ERROR IN GETTING RESULTS FROM DB: ', err)}
     else {
-      console.log('docs received from server are: ', docs)
       res.send(docs);
     }
   })    
@@ -46,13 +41,10 @@ app.listen(process.env.PORT || 3000, () => {
 })
 
 
-
-// HELPER FUNCTIONS:
-
-let makeQueryString = (queries) => {
+let makeQueryString = (props) => {
   let allQueries = []
+  let queries = (props ? JSON.parse(props) : {})
   for (let category in queries) {
-
     let oneQuery = [];
     if (queries[category].length > 0) {
       queries[category].forEach((selection) => {
