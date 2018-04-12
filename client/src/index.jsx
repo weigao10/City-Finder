@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import axios from 'axios';
-// import AnyComponent from './components/filename.jsx'
 import Search from './Search.jsx'
 import Results from './Results.jsx'
 
@@ -10,10 +9,14 @@ class App extends React.Component {
   constructor(props) {
   	super(props)
   	this.state = {
-      cities: []
+      cities: [],
+      favorites: [],
+      showFavorites: false
     }    
     this.getCities = this.getCities.bind(this);
     this.getWeather = this.getWeather.bind(this);
+    this.toggleFav = this.toggleFav.bind(this);
+    this.setInfo = this.setInfo.bind(this)
   }
 
   componentDidMount() {
@@ -22,14 +25,26 @@ class App extends React.Component {
     });
   }
 
+  toggleFav(){
+    this.setState({
+      showFavorites: !this.state.showFavorites
+    })
+  }
+
+  setInfo(state, data) {
+    this.setState({
+      [state]: data
+    })
+  }
+
   // getCities will return the cities that match the query string
-  getCities(state, CB = () => {}) {    
-    console.log('Sending GET request to /cities', state)
+  getCities(state, CB = () => {
+    
+  }) {    
     axios.get('/cities', {
       params: state
     })
       .then( (results) => {
-        console.log('Received results from GET/cities: ', results);
         this.setState({
           cities: results.data
         }, CB);
@@ -63,8 +78,14 @@ class App extends React.Component {
       <div className="app">
         <header className="navbar"><h1>City Finder</h1></header>         
         <div className="main columns">
-          <div className="column is-one-quarter"><Search getCities={this.getCities}/></div>
-          <div className="column is-three-quarters"><Results cities={this.state.cities}/></div>
+          <div className="column is-one-quarter"><Search getCities={this.getCities} getFaves={this.getFaves} 
+                                                          showFavorites={this.state.showFavorites}
+                                                          toggleFav = {this.toggleFav}
+                                                          setInfo = {this.setInfo}/></div>
+          <div className="column is-three-quarters"><Results cities={this.state.cities}
+                                                              favorites={this.state.favorites}
+                                                              setInfo = {this.setInfo}
+                                                              showFavorites={this.state.showFavorites}/></div>
         </div>
       </div>
     )
