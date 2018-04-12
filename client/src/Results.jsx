@@ -14,10 +14,15 @@ class Results extends React.Component{
   render(){
     
     if (this.props.cities.length > 0){
-      
+      let randomizedCities = this.props.cities.slice()
+      console.log('rcities is...', randomizedCities)
+      console.log('thispropscities is...', this.props.cities)
+      randomizedCities = randomizedCities.sort(function(){
+        return .5-(Math.random())
+      })
       return (
         <div className='cities' onClick={this.props.showFaves ? this.delete : this.save}>
-          {this.props.cities.map((city) => {
+            {randomizedCities.map((city) => {
             let style = {
               backgroundImage: 'url(' + city.image_url + ')',
               width: "300px",
