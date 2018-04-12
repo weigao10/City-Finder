@@ -41,6 +41,7 @@ const citySchema = mongoose.Schema({
 const City = mongoose.model('City', citySchema);
 
 const favSchema = mongoose.Schema({
+  _id: String,
   id: Number,
   city_name_short: String,
   city_name_long: String,
@@ -57,8 +58,8 @@ const favSchema = mongoose.Schema({
   population: Number,
   city_size: String,
   zip_code: Number,
-  image_url: String,
-  yahoo_weather_id: Number
+  yahoo_weather_id: Number,
+  image_url: String
 })
 
 const Favorites = mongoose.model('Favorites', favSchema)
@@ -72,15 +73,25 @@ let queryDB = (queryObj, callback) => {
   })
 }
 
+let addToDB = (data) => {
+  Favorites.create(data.city)
+}
+
+let deleteFromDB = (data) => {
+  Favorites.deleteOne({"id": data.city.id}, (err, data) => {
+    console.log('err', err)
+  })
+}
+
 let getFavesFromDB = (callback) => {
   console.log('in get faves whoo!')
   Favorites.find({}, (err, data) => {
     if (err) { console.log('Error in querying the Favorites database! Error is: ', err) };
-    console.log('db fav data ',data)
     callback(err, data);
   })
 }
 
 exports.queryDB = queryDB;
 exports.getFavesFromDB = getFavesFromDB;
-
+exports.addToDB = addToDB;
+exports.deleteFromDB = deleteFromDB;

@@ -11,19 +11,27 @@ app.use(express.static(path.join(__dirname, '/../client/dist')));
 app.use(bodyParser.json());
 
 app.get('/faves', (req, res) => {
-  //call DB to get favorites from database
-  
   DB.getFavesFromDB((err, data) => {
     if (err) {console.log('ERROR IN GETTING FAVES FROM DB: ', err)}
     else {
+      console.log('sdfsdfds', data)
       res.send(data)
     }
   })
 })
 
+app.post('/addFaves', (req, res) => {
+  DB.addToDB(req.body)
+})
+
+app.post('/deleteFaves', (req, res) => {
+  // console.log('hi david')
+  DB.deleteFromDB(req.body)
+  res.end(JSON.stringify(req.body))
+})
+
 app.get('/cities', (req, res) => {
   // call DB.queryDB here to make a query to the database for the cities that match the queryString from the front end
-
   let temp = (req.query !== '{}') ? req.query[0] : {};
   let queryString = makeQueryString(temp)
   DB.queryDB(queryString, (err, docs) => {

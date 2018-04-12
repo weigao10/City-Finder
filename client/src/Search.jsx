@@ -77,7 +77,7 @@ class Search extends React.Component{
 
   displayOnPage(event){ 
     this.triggerButton(event.target.id);
-    if(this.props.showFavorites){
+    if(!this.props.showFavorites){
       this.getFaves()
     } else {
       this.props.getCities(JSON.stringify(this.state))
@@ -88,9 +88,7 @@ class Search extends React.Component{
   getFaves(){
     axios.get('/faves')
     .then((res) => {
-      //send favorites data back to index
-      this.props.setFavs()
-
+      this.props.setInfo('favorites', res.data)
     })
     .catch((err) => {
       console.log('err in client get /faves', err)
