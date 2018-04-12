@@ -25,10 +25,17 @@
   display: inline;
 }
 
+
+/* 
+Keeps filter buttons fixed. Will not move on scroll
+*/
 .is-one-quarter {
   position: fixed;  
 }
 
+/* 
+Sets the margin of the cities so they do not go behind the filter buttons
+*/
 .is-three-quarters {
   margin-left: 25%;
 }
