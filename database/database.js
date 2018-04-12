@@ -25,7 +25,7 @@ const citySchema = mongoose.Schema({
   region: String,
   avg_high_temp: Number,
   climate: String,
-  rent_cost: Number,
+  rent_cost: String,
   rent: String, 
   avg_rent_index: Number, 
   by_ocean: String,
@@ -34,20 +34,64 @@ const citySchema = mongoose.Schema({
   population: Number,
   city_size: String,
   zip_code: Number,
-  image_url: String
+  image_url: String,
+  yahoo_weather_id: Number
 });
 
 const City = mongoose.model('City', citySchema);
 
+const favSchema = mongoose.Schema({
+  _id: String,
+  id: Number,
+  city_name_short: String,
+  city_name_long: String,
+  state: String,
+  region: String,
+  avg_high_temp: Number,
+  climate: String,
+  rent_cost: String,
+  rent: String, 
+  avg_rent_index: Number, 
+  by_ocean: String,
+  by_mountains: String,
+  by_lake: String,
+  population: Number,
+  city_size: String,
+  zip_code: Number,
+  yahoo_weather_id: Number,
+  image_url: String
+})
+
+const Favorites = mongoose.model('Favorites', favSchema)
 // remember to export functions made in this file
 
 let queryDB = (queryObj, callback) => {
   let temp = (queryObj !== '{}') ? JSON.parse(queryObj) : {};
   City.find(temp, (err, docs) => {
-    if (err) {console.log('Error in querying the database! Error is: ', err)};
+    if (err) { console.log('Error in querying the City database! Error is: ', err) };
     callback(err, docs);
   })
 }
 
-exports.queryDB = queryDB;
+let addToDB = (data) => {
+  Favorites.create(data.city)
+}
 
+let deleteFromDB = (data) => {
+  Favorites.deleteOne({"id": data.city.id}, (err, data) => {
+    console.log('err', err)
+  })
+}
+
+let getFavesFromDB = (callback) => {
+  console.log('in get faves whoo!')
+  Favorites.find({}, (err, data) => {
+    if (err) { console.log('Error in querying the Favorites database! Error is: ', err) };
+    callback(err, data);
+  })
+}
+
+exports.queryDB = queryDB;
+exports.getFavesFromDB = getFavesFromDB;
+exports.addToDB = addToDB;
+exports.deleteFromDB = deleteFromDB;
