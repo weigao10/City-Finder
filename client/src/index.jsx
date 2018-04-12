@@ -17,7 +17,15 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getCities({});
+    console.log('time at start:')
+
+    this.getCities({})
+    // .then(result => {
+    //   this.getWeather();
+    // }).catch(err => {
+    //   console.log(err);
+    // });
+
   }
 
   componentDidUpdate() {
@@ -30,13 +38,15 @@ class App extends React.Component {
     axios.get('/cities', {
       params: state
     })
-      .then( (results) => {
+      .then(results => {
         console.log('Received results from GET/cities: ', results);
         this.setState({
           cities: results.data
-        })      
+        });
+        
+        console.log('time after state updates');
       }) 
-      .catch( (error) => {
+      .catch(error => {
         console.log('Error in response to GET /cities: ', error);
       })
   }
@@ -49,16 +59,11 @@ class App extends React.Component {
       cityIDs.push(city.yahoo_weather_id);
     }
     
-    var options = {
-      method: 'GET',
-      url: '/weather',
-      params: {
-        cityIDs: cityIDs
-      }
-    }
+    var options = { method: 'GET', url: '/weather', params: { cityIDs: cityIDs } }
 
     axios(options).then(weatherData => {
-      console.log(weatherData)
+      console.log(weatherData);
+      console.log('time at end:');
     }).catch(err => {
       console.log(err);
     });
