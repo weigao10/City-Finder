@@ -24,3 +24,13 @@
   opacity: 1;
   display: inline;
 }
+
+button {  
+  border-radius: 12px;
+  border: 2px solid dodgerblue;
+  padding: 6px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+}
