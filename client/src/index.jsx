@@ -19,7 +19,6 @@ class App extends React.Component {
     this.getCities({});
   }
 
-  
   // getCities will return the cities that match the query string
   getCities(state) {    
     console.log('Sending GET request to /cities', state)
@@ -30,6 +29,8 @@ class App extends React.Component {
         console.log('Received results from GET/cities: ', results);
         this.setState({
           cities: results.data
+        }, () => {
+          console.log(this.state)
         })      
       }) 
       .catch( (error) => {

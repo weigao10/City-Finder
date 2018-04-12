@@ -15,6 +15,7 @@ class Search extends React.Component{
     }
     this.handleButtonClick = this.handleButtonClick.bind(this);
     this.onToggle = this.onToggle.bind(this)
+    this.clearFilters = this.clearFilters.bind(this)
   }
 
   handleButtonClick(event) {    
@@ -25,8 +26,29 @@ class Search extends React.Component{
 
   triggerButton(id) {
     let buttonId = document.getElementById(id);
-     buttonId.style.backgroundColor = (buttonId.style.backgroundColor === 'dodgerblue') ? 'Transparent' : 'dodgerblue'
+    console.log('buttonId is ', buttonId)
+     buttonId.style.backgroundColor = (buttonId.style.backgroundColor === 'dodgerblue') ? 'white' : 'dodgerblue'
   }
+
+  clearFilters(){
+    var buttons = document.getElementsByTagName("button");
+      for (var key in list){
+        if (list[key].style){ //this line accounts for clar filters button
+          list[key].style.backgroundColor = 'white'
+        }
+      }
+    this.setState({
+      region: [],
+      climate: [],
+      rent: [],
+      by_ocean: [],
+      by_mountains: [],
+      by_lake: [],
+      city_size: []
+    }, () => {
+      this.props.getCities()
+    })
+  }  
 
   render(){
     return (
@@ -50,7 +72,7 @@ class Search extends React.Component{
           <button id="9" name="region" value="Midwest" onClick={(event) => {this.onToggle(event)}}>Midwest</button>
           <br></br>
           <button id="10" name="region" value="Southwest" onClick={(event) => {this.onToggle(event)}}>Southwest</button>
-          <button id="11" name="region" value="Pacific" onClick={(event) => {this.onToggle(event)}}>Rockies</button>
+          <button id="11" name="region" value="Rockies" onClick={(event) => {this.onToggle(event)}}>Rockies</button>
           <button id="12" name="region" value="Pacific" onClick={(event) => {this.onToggle(event)}}>Pacific</button>
         </div>
         <div>
@@ -65,6 +87,7 @@ class Search extends React.Component{
           <button id="17" name="city_size" value="medium" onClick={(event) => {this.onToggle(event)}}>Mid-size city</button>
           <button id="18" name="city_size" value="big" onClick={(event) => {this.onToggle(event)}}>Big city</button>
         </div>
+        <button onClick = {this.clearFilters}>Show All Cities</button>
       </div>
     )
   }
