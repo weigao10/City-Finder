@@ -32,9 +32,9 @@ class Search extends React.Component{
 
   clearFilters(){
     var buttons = document.getElementsByTagName("button");
-      for (var key in list){
-        if (list[key].style){ //this line accounts for clar filters button
-          list[key].style.backgroundColor = 'white'
+      for (var key in buttons){
+        if (buttons[key].style){ //this line accounts for clar filters button
+          buttons[key].style.backgroundColor = 'white'
         }
       }
     this.setState({
