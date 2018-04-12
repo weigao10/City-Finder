@@ -11,10 +11,12 @@ class Search extends React.Component{
       by_ocean: [],
       by_mountains: [],
       by_lake: [],
-      city_size: []
+      city_size: [],
+      rent_cost:[]
     }
     this.handleButtonClick = this.handleButtonClick.bind(this);
     this.onToggle = this.onToggle.bind(this)
+    this.getFaves = this.getFaves.bind(this)
   }
 
   handleButtonClick(event) {    
@@ -25,7 +27,7 @@ class Search extends React.Component{
 
   triggerButton(id) {
     let buttonId = document.getElementById(id);
-     buttonId.style.backgroundColor = (buttonId.style.backgroundColor === 'dodgerblue') ? 'Transparent' : 'dodgerblue'
+    buttonId.style.backgroundColor = (buttonId.style.backgroundColor === 'dodgerblue') ? 'white' : 'dodgerblue'
   }
 
   render(){
@@ -65,8 +67,34 @@ class Search extends React.Component{
           <button id="17" name="city_size" value="medium" onClick={(event) => {this.onToggle(event)}}>Mid-size city</button>
           <button id="18" name="city_size" value="big" onClick={(event) => {this.onToggle(event)}}>Big city</button>
         </div>
+        <div>
+          <br/><br/>
+          <button id="20" onClick={(event) => {this.displayOnPage(event)}}>Show Favorites</button>
+        </div>
       </div>
     )
+  }
+
+  displayOnPage(event){ 
+    this.triggerButton(event.target.id);
+    if(this.props.showFavorites){
+      this.getFaves()
+    } else {
+      this.props.getCities(JSON.stringify(this.state))
+    }
+    this.props.toggleFav();
+  }
+
+  getFaves(){
+    axios.get('/faves')
+    .then((res) => {
+      //send favorites data back to index
+      this.props.setFavs()
+
+    })
+    .catch((err) => {
+      console.log('err in client get /faves', err)
+    })
   }
 
   onToggle(event){

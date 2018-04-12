@@ -10,7 +10,17 @@ const citySchema = mongoose.Schema({
     ocean: Boolean,
     lake: Boolean,
     mountains: Boolean,
-    img_url: String
+    img_url: String,
+    rent_cost: Number
     });
 
 const City = mongoose.model ('City', citySchema);
+
+const favSchema = mongoose.Schema({
+    id: ObjectId,
+    city_name: String,
+    state: String,
+    img_url: String
+});
+
+const Favorites = mongoose.model ('Favorites', favSchema);

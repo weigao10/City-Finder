@@ -10,6 +10,17 @@ const app = express();
 app.use(express.static(path.join(__dirname, '/../client/dist')));
 app.use(bodyParser.json());
 
+app.get('/faves', (req, res) => {
+  //call DB to get favorites from database
+  
+  DB.getFavesFromDB((err, data) => {
+    if (err) {console.log('ERROR IN GETTING FAVES FROM DB: ', err)}
+    else {
+      res.send(data)
+    }
+  })
+})
+
 app.get('/cities', (req, res) => {
   // call DB.queryDB here to make a query to the database for the cities that match the queryString from the front end
 

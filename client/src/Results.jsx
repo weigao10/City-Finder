@@ -6,18 +6,21 @@ class Results extends React.Component{
     super(props)
   }
 
-
-
   addHoverClass(e) {
         
   }
   render(){
-    
-    if (this.props.cities.length > 0){
-      
+    let display = this.props.cities
+    if(this.props.showFavorites){
+      display = this.props.favorites
+    }
+    console.log('display is ', display)
+
+    if (display.length > 0){
       return (
-        <div className='cities' onClick={this.props.showFaves ? this.delete : this.save}>
-          {this.props.cities.map((city) => {
+        // <div className='cities' onClick={this.props.showFaves ? this.delete : this.save}>
+        <div className='cities'>
+          {display.map((city) => {
             let style = {
               backgroundImage: 'url(' + city.image_url + ')',
               width: "300px",
@@ -42,7 +45,12 @@ class Results extends React.Component{
           })}
         </div>
       )
-    } else {
+    } else if(display === this.props.favorites){
+      return(
+        <div>No favorites saved. Please select favorite cities</div>
+      )
+    } 
+    else {
       return (
         <div>No cities match your search. Please select fewer filters.</div>
       )

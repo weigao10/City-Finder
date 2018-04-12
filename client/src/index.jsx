@@ -10,16 +10,32 @@ class App extends React.Component {
   constructor(props) {
   	super(props)
   	this.state = {
-      cities: []
+      cities: [],
+      favorites: [],
+      showFavorites: false
     }    
     this.getCities = this.getCities.bind(this);
+    this.toggleFav = this.toggleFav.bind(this);
+    this.setFaves = this.setFaves.bind(this)
   }
 
   componentDidMount() {
     this.getCities({});
   }
 
-  
+  toggleFav(){
+    this.setState({
+      showFavorites: !this.state.showFavorites
+    })
+  }
+
+  setFaves(data) {
+    console.log('set faves to', data.data)
+    this.setState({
+      favorites: data.data
+    })
+  }
+
   // getCities will return the cities that match the query string
   getCities(state) {    
     console.log('Sending GET request to /cities', state)
@@ -42,8 +58,13 @@ class App extends React.Component {
       <div className="app">
         <header className="navbar"><h1>City Finder</h1></header>         
         <div className="main columns">
-          <div className="column is-one-quarter"><Search getCities={this.getCities}/></div>
-          <div className="column is-three-quarters"><Results cities={this.state.cities}/></div>
+          <div className="column is-one-quarter"><Search getCities={this.getCities} getFaves={this.getFaves} 
+                                                          showFavorites={this.state.showFavorites}
+                                                          toggleFav = {this.toggleFav}
+                                                          setFaves = {this.setFaves}/></div>
+          <div className="column is-three-quarters"><Results cities={this.state.cities}
+                                                              favorites={this.state.favorites}
+                                                              showFavorites={this.state.showFavorites}/></div>
         </div>
       </div>
     )
