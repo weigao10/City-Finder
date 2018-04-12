@@ -59,8 +59,9 @@ class Results extends React.Component{
                                       onClick={() => {(this.props.showFavorites) ? this.delete(city) : this.save(city)}}>
               <div className="container" >
                 <div className="overlay">
+                  <h3>{city.city_name_short}, {city.state}</h3>
                   <div>Population: {city.population}</div>
-                  <div>rent/month: ${city.rent}</div>
+                  <div>rent/month: ${city.rent_cost}</div>
                 </div> 
                 <div className="info">
                   <h3>{city.city_name_short}, {city.state}</h3>

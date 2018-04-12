@@ -23,6 +23,15 @@
 .container .overlay:hover {
   opacity: .75;
   display: inline;
+  padding: 30px;
+}
+
+.container .info {
+  padding: 7px;
+}
+
+.container:hover .info{
+  display: none
 }
 
 /* 
