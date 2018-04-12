@@ -13,14 +13,17 @@ class App extends React.Component {
       cities: []
     }    
     this.getCities = this.getCities.bind(this);
+    this.getWeather = this.getWeather.bind(this);
   }
 
   componentDidMount() {
-    this.getCities({});
+    this.getCities({}, () => {
+      this.getWeather();
+    });
   }
 
   // getCities will return the cities that match the query string
-  getCities(state) {    
+  getCities(state, CB = () => {}) {    
     console.log('Sending GET request to /cities', state)
     axios.get('/cities', {
       params: state
@@ -29,13 +32,30 @@ class App extends React.Component {
         console.log('Received results from GET/cities: ', results);
         this.setState({
           cities: results.data
-        }, () => {
-          console.log(this.state)
-        })      
+        }, CB);
       }) 
       .catch( (error) => {
         console.log('Error in response to GET /cities: ', error);
       })
+  }
+
+  getWeather() {
+    var cities = this.state.cities;
+
+    var cityIDs = [];
+    for (var city of cities) {
+      cityIDs.push(city.yahoo_weather_id);
+    }
+    
+    var options = { method: 'GET', url: '/weather', params: { cityIDs: cityIDs } }
+
+    axios(options).then(weatherData => {
+      console.log('weatherData from API call:', weatherData);
+      console.log('state after getCities and get weather: ', this.state)
+      console.log('time at end:');
+    }).catch(err => {
+      console.log(err);
+    });
   }
 
   render () {
