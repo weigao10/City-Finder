@@ -7,14 +7,14 @@
 .cities{
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
-  grid-row-gap: 10px;
+  grid-row-gap: 20px;
   grid-template-columns: 1fr 1fr 1fr;
 }
 
 .container .overlay {
   position: absolute;
   height: 100%;
-  width: 100%;
+  width: 26%;
   opacity: 0;
   transition: .5s ease;
   background-color: #008CBA;
@@ -24,6 +24,16 @@
   opacity: 1;
   display: inline;
 }
+
+.is-one-quarter {
+  position: fixed;  
+}
+
+.is-three-quarters {
+  margin-left: 25%;
+}
+
+
 
 button {  
   border-radius: 12px;
