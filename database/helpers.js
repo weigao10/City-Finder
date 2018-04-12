@@ -9,31 +9,7 @@ fetchWeather = function(woeIDs, callback) {
     if (err) {
       callback(err, null);
     } else {
-      console.log(data.query.results.channel);
-
-      var weatherData = data.query.results.channel;
-
-      var importantData = [];
-
-      for (var city of weatherData) {
-        // extract weatherID from link
-        var yahoo_weather_id = parseInt(city.item.link.slice(108, 115));
-
-        // PULL OUT IMPORTANT DATA FROM RESPONSE AND REORGANIZE BEFORE SENDING
-        var cityWeather = {
-          yahoo_weather_id: yahoo_weather_id,
-          city_name_short: city.location.city,
-          state: city.location.region,
-          current_temp: parseInt(city.item.condition.temp),
-          current_description: city.item.condition.text,
-          wind_chill: parseInt(city.wind.chill),
-          current_wind: parseInt(city.wind.speed),
-          link: city.link
-        }
-        importantData.push(cityWeather);
-      }
-
-      callback(null, importantData);
+      callback(null, data);
     }
   });
 }
