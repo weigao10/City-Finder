@@ -11,7 +11,7 @@ class App extends React.Component {
   	super(props)
   	this.state = {
       cities: [],
-      haveWeatherData: true
+      haveWeatherData: false
     }    
     this.getCities = this.getCities.bind(this);
   }
@@ -42,7 +42,26 @@ class App extends React.Component {
   }
 
   getWeather() {
-    // query API
+    var cities = this.state.cities;
+
+    var cityIDs = [];
+    for (var city of cities) {
+      cityIDs.push(city.yahoo_weather_id);
+    }
+    
+    var options = {
+      method: 'GET',
+      url: '/weather',
+      params: {
+        cityIDs: cityIDs
+      }
+    }
+
+    axios(options).then(weatherData => {
+      console.log(weatherData)
+    }).catch(err => {
+      console.log(err);
+    });
   }
 
   render () {
