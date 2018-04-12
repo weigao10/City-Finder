@@ -22,7 +22,7 @@ class Results extends React.Component{
       })
       return (
         <div className='cities' onClick={this.props.showFaves ? this.delete : this.save}>
-            {randomizedCities.map((city) => {
+            {randomizedCities.map((city, idx) => {
             let style = {
               backgroundImage: 'url(' + city.image_url + ')',
               width: "300px",
@@ -31,18 +31,18 @@ class Results extends React.Component{
               backgroundSize: "cover"
             }
             return (
-            <div className="cityPanel" value={city} style={style}>
-              <div className="container">
-                <div className="overlay">
-                  <div>Population: {city.population}</div>
-                  <div>rent/month: ${city.rent}</div>
-                </div> 
-                {/* <div className="info column is-one-third"> */}
-                <div className="info">
-                  <h3>{city.city_name_short}, {city.state}</h3>
+              <div key={city._id} className="cityPanel" value={city} style={style}>
+                <div className="container">
+                  <div className="overlay">
+                    <div>Population: {city.population}</div>
+                    <div>rent/month: ${city.rent}</div>
+                  </div> 
+                  {/* <div className="info column is-one-third"> */}
+                  <div className="info">
+                    <h3>{city.city_name_short}, {city.state}</h3>
+                  </div>
                 </div>
               </div>
-            </div>
             )
           })}
         </div>
