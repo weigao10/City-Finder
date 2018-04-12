@@ -25,7 +25,7 @@ class Search extends React.Component{
 
   triggerButton(id) {
     let buttonId = document.getElementById(id);
-     buttonId.style.backgroundColor = (buttonId.style.backgroundColor === 'dodgerblue') ? 'Transparent' : 'dodgerblue'
+     buttonId.style.backgroundColor = (buttonId.style.backgroundColor === 'dodgerblue') ? 'white' : 'dodgerblue'
   }
 
   render(){
