@@ -27,10 +27,9 @@ class Search extends React.Component{
   }
 
   triggerButton(id) {
-    let buttonId = document.getElementById(id);    
-    console.log('This button was clicked: ', buttonId);    
+    let buttonId = document.getElementById(id);         
     // Don't toggle the colors for 'Show All Cities' and 'Show Favorites' buttons    
-    if (buttonId.classList.contains('filter')) {
+    if (buttonId.classList.contains('filter')) {      
       buttonId.style.backgroundColor = (buttonId.style.backgroundColor === 'dodgerblue') ? 'white' : 'dodgerblue'    
     }
   }
@@ -38,7 +37,7 @@ class Search extends React.Component{
   clearFilters(){
     var buttons = document.getElementsByTagName("button");
       for (var key in buttons){
-        if (buttons[key].style){ //this line accounts for clar filters button
+        if (buttons[key].style.backgroundColor === 'dodgerblue'){ //this line accounts for clar filters button
           buttons[key].style.backgroundColor = 'white'
         }
       }
