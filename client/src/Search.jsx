@@ -37,8 +37,8 @@ class Search extends React.Component{
   clearFilters(){
     var buttons = document.getElementsByTagName("button");
       for (var key in buttons){
-        if (buttons[key].style.backgroundColor === 'dodgerblue'){ //this line accounts for clar filters button
-          buttons[key].style.backgroundColor = 'white'
+        if (buttons[key].style && buttons[key].style.backgroundColor === 'dodgerblue'){ //this line accounts for clar filters button          
+            buttons[key].style.backgroundColor = 'white'          
         }
       }
     this.setState({
@@ -50,8 +50,10 @@ class Search extends React.Component{
       by_lake: [],
       city_size: []
     }, () => {
-      this.props.toggleFav();
-      this.props.getCities(this.state);
+      if(this.props.showFavorites) {
+        this.props.toggleFav()
+      }      
+      this.props.getCities(this.state);      
     })
   }  
 
@@ -93,10 +95,10 @@ class Search extends React.Component{
           <button className="filter width-one-third five-px-pad is-lowercase has-text-weight-semibold" id="18" name="city_size" value="big" onClick={(event) => {this.onToggle(event)}}>Big</button>
         </div>
         <div className="buttonRow marginTop20">
-        <button className="one-hundred-percent has-text-weight-bold button is-danger" id="19" onClick = {this.clearFilters}>Show All Cities</button>
+        <button className="one-hundred-percent has-text-weight-bold button is-danger" id="19" onClick = {this.clearFilters}>Clear Filters</button>
         </div>
         <div className="buttonRow marginTop20">
-        <button className="one-hundred-percent has-text-weight-bold button is-warning" id="20" onClick={(event) => {this.displayOnPage(event)}}>Show Favorites</button>
+        <button className="one-hundred-percent has-text-weight-bold button is-warning" id="20" onClick={(event) => {this.displayOnPage(event)}}>{this.props.showFavorites ? 'Show Results' : 'Show Favorites'}</button>
         </div>
       </div>
     )
