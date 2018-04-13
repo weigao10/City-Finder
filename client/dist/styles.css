@@ -84,3 +84,7 @@ h1 {
 .main {
   margin-top: 80px;
 }
+
+.container .overlay:active{
+  border: 3px red solid;  
+}
