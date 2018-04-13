@@ -76,7 +76,7 @@ class App extends React.Component {
   render () {
   	return (
       <div className="app">
-        <header className="navbar is-link"><h1 className="has-text-weight-bold has-text-white is-size-1 is-lowercase">City Finder</h1></header>         
+        <header className="navbar is-link is-fixed-top"><h1 className="has-text-weight-bold has-text-white is-size-1 is-lowercase">City Finder</h1></header>         
         <div className="main columns">
           <div className="column is-one-quarter"><Search getCities={this.getCities} getFaves={this.getFaves} 
                                                           showFavorites={this.state.showFavorites}
