@@ -50,7 +50,8 @@ class Search extends React.Component{
       by_lake: [],
       city_size: []
     }, () => {
-      this.props.getCities()
+      this.props.toggleFav();
+      this.props.getCities(this.state);
     })
   }  
 

@@ -70,7 +70,8 @@ class Results extends React.Component{
 
             return (
             <div className="cityPanel" value={city} style={style} 
-                                      onClick={() => {(this.props.showFavorites) ? this.delete(city) : this.save(city)}}>
+                                       onClick={() => {(this.props.showFavorites) ? this.delete(city) : this.save(city)}}
+                                       key={city._id}>
               <div className="container" >
                 <div className="overlay">
                   <h2 className="has-text-black has-text-weight-bold">{city.city_name_short}, {city.state}</h2>
