@@ -4,6 +4,7 @@ import axios from 'axios';
 class Results extends React.Component{
   constructor(props){
     super(props)
+    this.stylePopulation = this.stylePopulation.bind(this);
   }
 
   save(city){
@@ -33,6 +34,16 @@ class Results extends React.Component{
     })
   }
 
+  // CONVERT POPULATION TO A STRING AND ADD COMMAS FOR RENDERING PURPOSES
+  stylePopulation(population) {
+    var reversed = population.toString().split('').reverse();
+    for (var i = 3; i < reversed.length; i += 3) {
+      reversed.splice(i, 0, ',');
+      i++;
+    }
+    return reversed.reverse().join('');
+  }
+
   render(){
     let display = this.props.cities
     if(this.props.showFavorites){
@@ -54,17 +65,21 @@ class Results extends React.Component{
               backgroundPosition: "center",
               backgroundSize: "cover"
             }
+
+            var popString = this.stylePopulation(city.population)
+
             return (
             <div className="cityPanel" value={city} style={style} 
                                       onClick={() => {(this.props.showFavorites) ? this.delete(city) : this.save(city)}}>
               <div className="container" >
                 <div className="overlay">
-                  <h3>{city.city_name_short}, {city.state}</h3>
-                  <div>Population: {city.population}</div>
-                  <div>rent/month: ${city.rent_cost}</div>
+                  <h2 className="has-text-black has-text-weight-bold">{city.city_name_short}, {city.state}</h2>
+                  <div className="has-text-black has-text-weight-semibold">Population: {popString}</div>
+                  <div className="has-text-black has-text-weight-semibold">Average rent: ${city.rent_cost}</div>
+                  <div className="has-text-black has-text-weight-semibold">Average high temp: {city.avg_high_temp}{'\xB0'}</div>
                 </div> 
                 <div className="info">
-                  <h3>{city.city_name_short}, {city.state}</h3>
+                  <h2 className="has-text-black has-text-weight-bold">{city.city_name_short}, {city.state}</h2>
                 </div>
               </div>
               </div>
