@@ -27,8 +27,9 @@ class Search extends React.Component{
   }
 
   triggerButton(id) {
-    let buttonId = document.getElementById(id);
-    buttonId.style.backgroundColor = (buttonId.style.backgroundColor === 'dodgerblue') ? 'white' : 'dodgerblue'
+    let buttonId = document.getElementById(id);    
+    // Don't toggle the colors for 'Show All Cities' and 'Show Favorites' buttons    
+      buttonId.style.backgroundColor = (buttonId.style.backgroundColor === 'dodgerblue') ? 'white' : 'dodgerblue'    
   }
 
   clearFilters(){
@@ -89,7 +90,7 @@ class Search extends React.Component{
           <button className="width-one-third five-px-pad is-lowercase" id="18" name="city_size" value="big" onClick={(event) => {this.onToggle(event)}}>Big</button>
         </div>
         <div className="buttonRow marginTop20">
-        <button className="one-hundred-percent button is-danger" onClick = {this.clearFilters}>Show All Cities</button>
+        <button className="one-hundred-percent button is-danger" id="19" onClick = {this.clearFilters}>Show All Cities</button>
         </div>
         <div className="buttonRow marginTop20">
         <button className="one-hundred-percent button is-warning" id="20" onClick={(event) => {this.displayOnPage(event)}}>Show Favorites</button>
