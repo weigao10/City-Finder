@@ -48,10 +48,6 @@ class Results extends React.Component{
     let display = this.props.cities
     if(this.props.showFavorites){
       display = this.props.favorites
-    } else{
-      display = display.sort(function(){
-        return .5-(Math.random())
-      })
     }
 
     if (display.length > 0){

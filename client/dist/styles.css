@@ -31,7 +31,7 @@
   padding: 7px;
 }
 
-.container:hover .info{
+.container .overlay:hover + .info {
   display: none
 }
 
