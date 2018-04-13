@@ -4,6 +4,7 @@ import axios from 'axios';
 class Results extends React.Component{
   constructor(props){
     super(props)
+    this.stylePopulation = this.stylePopulation.bind(this);
   }
 
   save(city){
@@ -33,6 +34,13 @@ class Results extends React.Component{
     })
   }
 
+  stylePopulation(population) {
+    var reversed = population.reverse().split('');
+    for (var i = 0; i < reversed.length; i++) {
+
+    }
+  }
+
   render(){
     let display = this.props.cities
     if(this.props.showFavorites){
@@ -54,6 +62,9 @@ class Results extends React.Component{
               backgroundPosition: "center",
               backgroundSize: "cover"
             }
+            
+            
+
             return (
             <div className="cityPanel" value={city} style={style} 
                                       onClick={() => {(this.props.showFavorites) ? this.delete(city) : this.save(city)}}>
