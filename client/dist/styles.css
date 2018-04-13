@@ -69,7 +69,7 @@ header{
   text-align: center;
 }
 
-button {  
+.filter {  
   border-radius: 12px;
   border: 2px solid dodgerblue;
   padding: 6px;

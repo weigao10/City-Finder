@@ -28,8 +28,11 @@ class Search extends React.Component{
 
   triggerButton(id) {
     let buttonId = document.getElementById(id);    
+    console.log('This button was clicked: ', buttonId);    
     // Don't toggle the colors for 'Show All Cities' and 'Show Favorites' buttons    
+    if (buttonId.classList.contains('filter')) {
       buttonId.style.backgroundColor = (buttonId.style.backgroundColor === 'dodgerblue') ? 'white' : 'dodgerblue'    
+    }
   }
 
   clearFilters(){
@@ -57,37 +60,37 @@ class Search extends React.Component{
       <div className="buttons">
         <div className="buttonRow">
           <p className="button-title has-text-centered has-text-black has-text-weight-semibold">Cost of Living</p>
-          <button className="width-one-third five-px-pad is-lowercase" id="1" name="rent" value="low" onClick={(event) => {this.onToggle(event)}}>Low</button>    
-          <button className="width-one-third five-px-pad is-lowercase" id="2" name="rent" value="medium" onClick={(event) => {this.onToggle(event)}}>Med</button>
-          <button className="width-one-third five-px-pad is-lowercase" id="3" name="rent" value="high" onClick={(event) => {this.onToggle(event)}}>High</button>        
+          <button className="filter width-one-third five-px-pad is-lowercase" id="1" name="rent" value="low" onClick={(event) => {this.onToggle(event)}}>Low</button>    
+          <button className="filter width-one-third five-px-pad is-lowercase" id="2" name="rent" value="medium" onClick={(event) => {this.onToggle(event)}}>Med</button>
+          <button className="filter width-one-third five-px-pad is-lowercase" id="3" name="rent" value="high" onClick={(event) => {this.onToggle(event)}}>High</button>        
         </div>
         <div className="buttonRow">
           <p className="button-title has-text-centered has-text-black has-text-weight-semibold">Weather</p>
-          <button className="width-one-third five-px-pad is-lowercase" id="4" name="climate" value="cold" onClick={(event) => {this.onToggle(event)}}>Cold</button>    
-          <button className="width-one-third five-px-pad is-lowercase" id="5" name="climate" value="mild" onClick={(event) => {this.onToggle(event)}}>Mild</button>
-          <button className="width-one-third five-px-pad is-lowercase" id="6" name="climate" value="hot" onClick={(event) => {this.onToggle(event)}}>Hot</button>
+          <button className="filter width-one-third five-px-pad is-lowercase" id="4" name="climate" value="cold" onClick={(event) => {this.onToggle(event)}}>Cold</button>    
+          <button className="filter width-one-third five-px-pad is-lowercase" id="5" name="climate" value="mild" onClick={(event) => {this.onToggle(event)}}>Mild</button>
+          <button className="filter width-one-third five-px-pad is-lowercase" id="6" name="climate" value="hot" onClick={(event) => {this.onToggle(event)}}>Hot</button>
         </div>
         <div className="buttonRow">
           <p className="button-title has-text-centered has-text-black has-text-weight-semibold">Region</p>
-          <button className="width-one-third five-px-pad is-lowercase" id="7" name="region" value="Northeast" onClick={(event) => {this.onToggle(event)}}>Northeast</button>    
-          <button className="width-one-third five-px-pad is-lowercase" id="8" name="region" value="Southeast" onClick={(event) => {this.onToggle(event)}}>Southeast</button>
-          <button className="width-one-third five-px-pad is-lowercase" id="9" name="region" value="Midwest" onClick={(event) => {this.onToggle(event)}}>Midwest</button>
+          <button className="filter width-one-third five-px-pad is-lowercase" id="7" name="region" value="Northeast" onClick={(event) => {this.onToggle(event)}}>Northeast</button>    
+          <button className="filter width-one-third five-px-pad is-lowercase" id="8" name="region" value="Southeast" onClick={(event) => {this.onToggle(event)}}>Southeast</button>
+          <button className="filter width-one-third five-px-pad is-lowercase" id="9" name="region" value="Midwest" onClick={(event) => {this.onToggle(event)}}>Midwest</button>
           <br></br>
-          <button className="width-one-third five-px-pad is-lowercase" id="10" name="region" value="Southwest" onClick={(event) => {this.onToggle(event)}}>Southwest</button>
-          <button className="width-one-third five-px-pad is-lowercase" id="11" name="region" value="Rockies" onClick={(event) => {this.onToggle(event)}}>Rockies</button>
-          <button className="width-one-third five-px-pad is-lowercase" id="12" name="region" value="Pacific" onClick={(event) => {this.onToggle(event)}}>Pacific</button>
+          <button className="filter width-one-third five-px-pad is-lowercase" id="10" name="region" value="Southwest" onClick={(event) => {this.onToggle(event)}}>Southwest</button>
+          <button className="filter width-one-third five-px-pad is-lowercase" id="11" name="region" value="Rockies" onClick={(event) => {this.onToggle(event)}}>Rockies</button>
+          <button className="filter width-one-third five-px-pad is-lowercase" id="12" name="region" value="Pacific" onClick={(event) => {this.onToggle(event)}}>Pacific</button>
         </div>
         <div className="buttonRow">
           <p className="button-title has-text-centered has-text-black has-text-weight-semibold">Environment</p>
-          <button className="width-one-third five-px-pad is-lowercase" id="13" name="by_ocean" value="TRUE" onClick={(event) => {this.onToggle(event)}}>Near the ocean</button>    
-          <button className="width-one-third five-px-pad is-lowercase" id="14" name="by_mountains" value="TRUE" onClick={(event) => {this.onToggle(event)}}>In the mountains</button>
-          <button className="width-one-third five-px-pad is-lowercase" id="15" name="by_lake" value="TRUE" onClick={(event) => {this.onToggle(event)}}>Near major lake</button>
+          <button className="filter width-one-third five-px-pad is-lowercase" id="13" name="by_ocean" value="TRUE" onClick={(event) => {this.onToggle(event)}}>Near the ocean</button>    
+          <button className="filter width-one-third five-px-pad is-lowercase" id="14" name="by_mountains" value="TRUE" onClick={(event) => {this.onToggle(event)}}>In the mountains</button>
+          <button className="filter width-one-third five-px-pad is-lowercase" id="15" name="by_lake" value="TRUE" onClick={(event) => {this.onToggle(event)}}>Near major lake</button>
         </div>
         <div className="buttonRow">
           <p className="button-title has-text-centered has-text-black has-text-weight-semibold">Metro size</p>
-          <button className="width-one-third five-px-pad is-lowercase" id="16" name="city_size" value="small" onClick={(event) => {this.onToggle(event)}}>Small</button>
-          <button className="width-one-third five-px-pad is-lowercase" id="17" name="city_size" value="medium" onClick={(event) => {this.onToggle(event)}}>Mid-size</button>
-          <button className="width-one-third five-px-pad is-lowercase" id="18" name="city_size" value="big" onClick={(event) => {this.onToggle(event)}}>Big</button>
+          <button className="filter width-one-third five-px-pad is-lowercase" id="16" name="city_size" value="small" onClick={(event) => {this.onToggle(event)}}>Small</button>
+          <button className="filter width-one-third five-px-pad is-lowercase" id="17" name="city_size" value="medium" onClick={(event) => {this.onToggle(event)}}>Mid-size</button>
+          <button className="filter width-one-third five-px-pad is-lowercase" id="18" name="city_size" value="big" onClick={(event) => {this.onToggle(event)}}>Big</button>
         </div>
         <div className="buttonRow marginTop20">
         <button className="one-hundred-percent button is-danger" id="19" onClick = {this.clearFilters}>Show All Cities</button>
