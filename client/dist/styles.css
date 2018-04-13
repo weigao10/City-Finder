@@ -9,12 +9,13 @@
   grid-template-rows: 1fr 1fr 1fr;
   grid-row-gap: 20px;
   grid-template-columns: 1fr 1fr 1fr;
+  margin-top: 8px;
 }
 
 .container .overlay {
   position: absolute;
   height: 100%;
-  width: 26%;
+  width: 26.1%;
   opacity: 0;
   transition: .2s ease;
   background-color: rgb(228, 234, 236);
@@ -51,10 +52,6 @@ Sets the margin of the cities so they do not go behind the filter buttons
 .buttonRow {
   width: 100%;
   margin: 8px 0 8px 8px;
-}
-
-.marginTop20 {
-  margin: 20px 0 8px 8px;
 }
 
 .width-one-third {
