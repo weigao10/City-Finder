@@ -34,11 +34,14 @@ class Results extends React.Component{
     })
   }
 
+  // CONVERT POPULATION TO A STRING AND ADD COMMAS FOR RENDERING PURPOSES
   stylePopulation(population) {
-    var reversed = population.reverse().split('');
-    for (var i = 0; i < reversed.length; i++) {
-
+    var reversed = population.toString().split('').reverse();
+    for (var i = 3; i < reversed.length; i += 3) {
+      reversed.splice(i, 0, ',');
+      i++;
     }
+    return reversed.reverse().join('');
   }
 
   render(){
@@ -62,20 +65,21 @@ class Results extends React.Component{
               backgroundPosition: "center",
               backgroundSize: "cover"
             }
-            
-            
+
+            var popString = this.stylePopulation(city.population)
 
             return (
             <div className="cityPanel" value={city} style={style} 
                                       onClick={() => {(this.props.showFavorites) ? this.delete(city) : this.save(city)}}>
               <div className="container" >
                 <div className="overlay">
-                  <h3>{city.city_name_short}, {city.state}</h3>
-                  <div>Population: {city.population}</div>
-                  <div>rent/month: ${city.rent_cost}</div>
+                  <h2 className="has-text-black has-text-weight-bold">{city.city_name_short}, {city.state}</h2>
+                  <div className="has-text-black has-text-weight-semibold">Population: {popString}</div>
+                  <div className="has-text-black has-text-weight-semibold">Average rent: ${city.rent_cost}</div>
+                  <div className="has-text-black has-text-weight-semibold">Average high temp: {city.avg_high_temp}{'\xB0'}</div>
                 </div> 
                 <div className="info">
-                  <h3>{city.city_name_short}, {city.state}</h3>
+                  <h2 className="has-text-black has-text-weight-bold">{city.city_name_short}, {city.state}</h2>
                 </div>
               </div>
               </div>
